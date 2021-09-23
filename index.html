@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a521ba4f9b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/jpg" href="favicon.ico"/>
     <title>Olivia Words</title>
 </head>
-<body id="party-js-container">
+<body>
     <audio src=""></audio>
-    <header><h1>Olivia's Words</h1></header>
+    <header><p>Olivia's Words</p></header>
+    <div id="confetti"></div>
     <main id="game-area">
 
     </main>
     <footer>
-        <span id="play-button">Play</span>
-        <span id="score">Score: </span>
+        <span id="play-button">Play <i class="far fa-play-circle" id="replay-icon"></i></span>
+        <span id="score">Score: 
+            <span id="correct-answers">0 </span>/
+            <span id="incorrect-answers"> 0</span> 
+        </span>
     </footer>
     <script src="script.js"></script>
 </body>

@@ -19,8 +19,10 @@ header{
     color: whitesmoke;
     width: 100vw;
     height: 10%;
+    padding-top: 16px;
     text-align: center;
-    /* background: rgba(200,0,0, 0.3); */
+    font-size: 4rem;
+    /* background-color: rosybrown; */
 }
 
 
@@ -66,15 +68,41 @@ main {
 
 footer {
     background: rgba(0,0,0, 0.3);
+    padding: 15px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
     height: 10%;
     color:whitesmoke;
-    font-size: 5rem;
     text-align: center;
+    font-size: 2.75rem;
+}
+
+#replay-icon {
+    font-size: 1.75rem;
+}
+
+#correct-answers {
+    color: springgreen;
+}
+#incorrect-answers {
+    color: red;
 }
 
 #play-button {
     cursor: pointer;
+    /* background-color: royalblue; */
 }
+
+#confetti {
+    position: absolute;
+    display: none;
+    background: url("./confetti.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+

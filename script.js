@@ -3,11 +3,13 @@ const rainbowWords = ["I", "Like", "The", "Look", "At", "My", "A", "See", "Me"];
 const playBtn = document.getElementById('play-button');
 const audio = document.querySelector('audio');
 const wordCards = document.querySelectorAll('.the-words');
+const correctScore = document.getElementById('correct-answers');
+const incorrectScore = document.getElementById('incorrect-answers');
 let roundStarted = false;
 let theWord = "";
 let score = 0;
 let wrongGuesses = 0;
-let rightGUesses = 0;
+let rightGuesses = 0;
 
 
 
@@ -20,16 +22,17 @@ function populateGameArea() {
 
 function playWord(e) {
     roundStarted = true;
-    theWord = rainbowWords[Math.floor(Math.random() * rainbowWords.length + 1)].toLowerCase()
+    theWord = rainbowWords[Math.floor(Math.random() * (rainbowWords.length + 1) + 1)].toLowerCase()
     audio.src = `audio/round1/${theWord}.ogg`;
     console.log(theWord)
     audio.play();
-    playBtn.innerText = "Replay";
+    playBtn.innerHTML = "Replay " + '<i class="fas fa-redo-alt" id="replay-icon"></i>';
+    // playBtn.innerText = "Replay";
     return audio.src;
 }
 
 function replayWord() {
-    // audio.src = `audio/round1/${theWord}.ogg`;
+    audio.src = `audio/round1/${theWord}.ogg`;
     audio.play();
 
 }
@@ -40,12 +43,17 @@ function playCard(e) {
 
     if(roundStarted){
         if(theWord === e.toLowerCase()){
+            rightGuesses++;
             roundStarted = false;
-            playBtn.innerText = "Play";
+            playBtn.innerHTML = "Play " + '<i class="far fa-play-circle" id="replay-icon"></i>';
             console.log('winner winner chicken dinner');
-            
+            correctScore.innerText = rightGuesses + " ";
+            document.getElementById('confetti').style.display = "block";
+            setTimeout(hide, 1000);
             
         } else {
+            wrongGuesses++;
+            incorrectScore.innerText = " " + wrongGuesses;
             console.log('try agin looser')
         }
     }
@@ -53,9 +61,16 @@ function playCard(e) {
 }
 
 
+function hide() {
+    document.getElementById('confetti').style.display = "none";
+}
+
 populateGameArea();
 
 playBtn.addEventListener('click', ()=> {
+
+
+
     if(!roundStarted) {
         playWord();
     } else{

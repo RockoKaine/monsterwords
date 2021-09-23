@@ -21,10 +21,10 @@ function populateGameArea() {
 }
 
 function playWord(e) {
+    
     roundStarted = true;
-    theWord = rainbowWords[Math.floor(Math.random() * (rainbowWords.length + 1) + 1)].toLowerCase()
+    theWord = rainbowWords[Math.floor(Math.random() * rainbowWords.length )].toLowerCase();
     audio.src = `audio/round1/${theWord}.ogg`;
-    console.log(theWord)
     audio.play();
     playBtn.innerHTML = "Replay " + '<i class="fas fa-redo-alt" id="replay-icon"></i>';
     // playBtn.innerText = "Replay";
@@ -38,24 +38,30 @@ function replayWord() {
 }
 
 function playCard(e) {
+    console.log(Math.floor(Math.random() * rainbowWords.length));
     audio.src = `audio/round1/${e.toLowerCase()}.ogg`;
-    audio.play();
-
     if(roundStarted){
         if(theWord === e.toLowerCase()){
             rightGuesses++;
             roundStarted = false;
             playBtn.innerHTML = "Play " + '<i class="far fa-play-circle" id="replay-icon"></i>';
-            console.log('winner winner chicken dinner');
             correctScore.innerText = rightGuesses + " ";
             document.getElementById('confetti').style.display = "block";
+            
             setTimeout(hide, 1000);
             
         } else {
             wrongGuesses++;
             incorrectScore.innerText = " " + wrongGuesses;
-            console.log('try agin looser')
+            document.body.classList.toggle('animate-shake');
+            setTimeout(()=>{
+                document.body.classList.toggle('animate-shake');
+                
+            }, 500);
         }
+    } else {
+        audio.play();
+
     }
 
 }

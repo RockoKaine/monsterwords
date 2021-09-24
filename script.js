@@ -46,6 +46,7 @@ function playCard(e) {
             roundStarted = false;
             playBtn.innerHTML = "Play " + '<i class="far fa-play-circle" id="replay-icon"></i>';
             correctScore.innerText = rightGuesses + " ";
+            audio.play();
             document.getElementById('confetti').style.display = "block";
             
             setTimeout(hide, 1000);
